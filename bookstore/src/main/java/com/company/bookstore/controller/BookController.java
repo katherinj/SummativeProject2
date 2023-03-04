@@ -4,6 +4,7 @@ import com.company.bookstore.model.Author;
 import com.company.bookstore.model.Book;
 import com.company.bookstore.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,25 +15,41 @@ public class BookController {
 
     @Autowired
     BookRepository bookRepository;
-    @GetMapping()
-    public Book searchBookByAuthorId(@PathVariable Integer authorId) {
+    @GetMapping("/book")
+    public Book searchBookByAuthorId(@RequestParam Integer authorId) {
         Optional<Book> book= bookRepository.findById(authorId);
         if (book.isPresent()) return book.get();
         return null;
     }
-    @GetMapping()
+    @GetMapping("/book")
     public List<Book> readAllBook() {
         List<Book> bookList = bookRepository.findAll();
         return bookList;
     }
-    @GetMapping()
+    @GetMapping("/book/{id}")
     public Book readBookById(@PathVariable Integer id) {
         Optional<Book> book = bookRepository.findById(id);
         if (book.isPresent()) return book.get();
         return null;
     }
-    @PostMapping()
-    public void createBook(@RequestParam Book book) {
+    @PostMapping("/book")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void createBook(@RequestBody Book book) {
         bookRepository.save(book);
     }
+
+    @DeleteMapping("/book")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteBook(@PathVariable Integer id) {
+        bookRepository.deleteById(id);
+    }
+
+    @PutMapping("/book")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateBook(@RequestBody Book book) {
+        bookRepository.save(book);
+    }
+
+
+
 }
