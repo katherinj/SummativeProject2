@@ -9,8 +9,33 @@ type Publisher {
     phone: String!
     email: String!
 }
+scalar Date
+type Book {
+    bookId: Int!
+    isbn: String!
+    publishDate: Date!
+    authorId: Int!
+    price: Float
+    title: String
+    publisherId: Int!
+
+}
+
+type Author {
+    authorId: Int!
+    firstName: String!
+    lastName: String!
+    street: String
+    city: String
+    state: String
+    postalCode: String
+    phone: String
+    email: String
+}
 
 type Query {
     publishers: [Publisher]!
     findPublisherById(id:Int): Publisher
+    findBookById(id:Int): Book
+    findAuthorById(id:Int): Author
 }

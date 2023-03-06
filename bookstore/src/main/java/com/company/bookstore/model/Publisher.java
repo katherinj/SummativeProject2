@@ -6,7 +6,7 @@ import java.util.Objects;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-@Table(name = "label")
+@Table(name = "publisher")
 public class Publisher {
 
     @Id
