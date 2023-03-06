@@ -37,7 +37,7 @@ public class PublisherRepositoryTest {
         publisher.setEmail("joesmith@gmail.com");
 
         //Act...
-        publisherRepo.save(publisher);
+        publisher = publisherRepo.save(publisher);
 
         //Assert...
         Optional<Publisher> publisher1 = publisherRepo.findById(publisher.getId());
@@ -58,7 +58,7 @@ public class PublisherRepositoryTest {
 
         //Act...
         publisher.setName("UPDATED");
-        publisherRepo.save(publisher);
+        publisher = publisherRepo.save(publisher);
 
         //Assert...
         Optional<Publisher> publisher1 = publisherRepo.findById(publisher.getId());
@@ -99,7 +99,7 @@ public class PublisherRepositoryTest {
         publisher.setPostalCode("01249");
         publisher.setPhone("6099549392");
         publisher.setEmail("joesmith@gmail.com");
-        publisherRepo.save(publisher);
+        publisher = publisherRepo.save(publisher);
 
         Optional<Publisher> foundPublisher = publisherRepo.findById(publisher.getId());
 
