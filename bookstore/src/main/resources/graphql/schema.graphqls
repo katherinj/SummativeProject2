@@ -9,11 +9,11 @@ type Publisher {
     phone: String!
     email: String!
 }
-scalar Date
+
 type Book {
     bookId: Int!
     isbn: String!
-    publishDate: Date!
+    publishDate: String!
     authorId: Int!
     price: Float
     title: String

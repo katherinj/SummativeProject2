@@ -15,13 +15,13 @@ public class BookController {
 
     @Autowired
     BookRepository bookRepository;
-    @GetMapping("/book")
+    @GetMapping(value = "/book", params = "authorId")
     public Book searchBookByAuthorId(@RequestParam Integer authorId) {
         Optional<Book> book= bookRepository.findById(authorId);
         if (book.isPresent()) return book.get();
         return null;
     }
-    @GetMapping("/book")
+    @GetMapping(value = "/book")
     public List<Book> readAllBook() {
         List<Book> bookList = bookRepository.findAll();
         return bookList;
@@ -49,7 +49,4 @@ public class BookController {
     public void updateBook(@RequestBody Book book) {
         bookRepository.save(book);
     }
-
-
-
 }
