@@ -6,8 +6,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Set;
 
 @Repository
+@Component
 public interface BookRepository extends JpaRepository<Book, Integer> {
-    List<Book> findByAuthorId(Integer authorId);
+    Set<Book> findByAuthorId(Integer authorId);
 }

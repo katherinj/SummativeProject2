@@ -10,6 +10,7 @@ type Publisher {
     email: String!
 }
 
+
 type Book {
     bookId: Int!
     isbn: String!
@@ -18,8 +19,8 @@ type Book {
     price: Float
     title: String
     publisherId: Int!
-
 }
+
 
 type Author {
     authorId: Int!

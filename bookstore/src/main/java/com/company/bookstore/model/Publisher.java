@@ -18,6 +18,7 @@ public class Publisher {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "publisherId")
+
     private Set<Book> books = new HashSet<>();
 
     private String name;
@@ -84,5 +85,4 @@ public class Publisher {
     public int hashCode() {
         return Objects.hash(getId(), getName(), getStreet(), getCity(), getState(), getPostalCode(), getPhone(), getEmail());
     }
-
 }

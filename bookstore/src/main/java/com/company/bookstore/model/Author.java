@@ -24,7 +24,8 @@ public class Author {
     private String phone;
     private String email;
     @OneToMany(mappedBy = "authorId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Set<Book> books;
+    private Set<Book> books = new HashSet<>();
+
 
     public Integer getAuthorId() {
         return authorId;

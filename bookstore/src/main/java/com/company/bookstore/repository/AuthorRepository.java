@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.criteria.CriteriaBuilder;
 
 @Repository
+@Component
 public interface AuthorRepository extends JpaRepository<Author, Integer> {
 
 }

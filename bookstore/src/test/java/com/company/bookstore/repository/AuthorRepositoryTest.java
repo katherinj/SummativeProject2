@@ -34,11 +34,11 @@ public class AuthorRepositoryTest {
         author.setPostalCode("11100");
         author.setState("CA");
         author.setCity("Los Angeles");
-        authorRepository.save(author);
+        author = authorRepository.save(author);
         // Act...
         Optional<Author> author1 = authorRepository.findById(author.getAuthorId());
         // Assert...
-        assertEquals(author1, author);
+        assertEquals(author1.get(), author);
     }
 
     @Test
@@ -86,15 +86,16 @@ public class AuthorRepositoryTest {
         author.setPostalCode("11100");
         author.setState("CA");
         author.setCity("Los Angeles");
-        authorRepository.save(author);
+        author = authorRepository.save(author);
         // Act...
         author.setCity("Charlottesville");
         author.setState("VA");
         author.setPostalCode("22903");
         author.setStreet("Fontaine Ave");
+        author = authorRepository.save(author);
         // Assert...
         Optional<Author> author1 = authorRepository.findById(author.getAuthorId());
-        assertEquals(author1, author);
+        assertEquals(author1.get(), author);
     }
     @Test
     public void testDeleteAuthor() {
