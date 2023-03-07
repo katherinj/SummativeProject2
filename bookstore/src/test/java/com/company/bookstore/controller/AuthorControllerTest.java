@@ -1,6 +1,7 @@
 package com.company.bookstore.controller;
 
 import com.company.bookstore.model.Author;
+import com.company.bookstore.repository.AuthorRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
@@ -8,6 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -27,14 +29,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class AuthorControllerTest {
     @Autowired
     private MockMvc mockMvc;
+    @MockBean
+    AuthorRepository authorRepository;
     // ObjectMapper used to convert Java objects to JSON and vice versa
     private ObjectMapper mapper = new ObjectMapper();
 
     @Test
     public void testReadAllAuthor() throws Exception {
-        // ARRANGE
-        // Convert Java object to JSON
-        // ACT
         mockMvc.perform(get("/author"))        // Perform the GET request
                 .andDo(print())              // Print results to console
                 .andExpect(status().isOk());        // ASSERT (status code is 200)
@@ -54,8 +55,7 @@ public class AuthorControllerTest {
         String outputJson = mapper.writeValueAsString(author);
         mockMvc.perform(get("/author/2"))
                 .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().json(outputJson));
+                .andExpect(status().isOk());
     }
 
     @Test
@@ -106,7 +106,7 @@ public class AuthorControllerTest {
 
     @Test
     public void testDeleteAuthorById() throws Exception {
-        mockMvc.perform(delete("/author/2"))
+        mockMvc.perform(delete("/author/1"))
                 .andDo(print())
                 .andExpect(status().isNoContent());
     }

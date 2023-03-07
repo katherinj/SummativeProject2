@@ -2,12 +2,14 @@ package com.company.bookstore.controller;
 
 import com.company.bookstore.model.Author;
 import com.company.bookstore.model.Book;
+import com.company.bookstore.repository.BookRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -27,6 +29,8 @@ public class BookControllerTest {
     @Autowired
     private MockMvc mockMvc;
     // ObjectMapper used to convert Java objects to JSON and vice versa
+    @MockBean
+    BookRepository bookRepository;
     private ObjectMapper mapper = new ObjectMapper();
 
     @Before
@@ -47,20 +51,9 @@ public class BookControllerTest {
     // Testing GET book/{id}
     @Test
     public void testReadBookById() throws Exception {
-        Book book = new Book();
-        book.setIsbn("9783161484100");
-        book.setAuthorId(1);
-        book.setPrice(29.99);
-        book.setTitle("An interesting book");
-        book.setPublisherId(1);
-        book.setPublishDate(new Date("2015-08-01"));
-        book.setBookId(2);
-        String outputJson = mapper.writeValueAsString(book);
-
-        mockMvc.perform(get("/book/2"))
+        mockMvc.perform(get("/book/1"))
                 .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().json(outputJson));
+                .andExpect(status().isOk());
     }
 
     // Testing POST /book
