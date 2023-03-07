@@ -35,11 +35,11 @@ public class BookController {
     }
     @PostMapping("/book")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createBook(@RequestBody Book book) {
-        bookRepository.save(book);
+    public Book createBook(@RequestBody Book book) {
+        return book = bookRepository.save(book);
     }
 
-    @DeleteMapping("/book")
+    @DeleteMapping("/book/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteBook(@PathVariable Integer id) {
         bookRepository.deleteById(id);
@@ -47,7 +47,7 @@ public class BookController {
 
     @PutMapping("/book")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateBook(@RequestBody Book book) {
-        bookRepository.save(book);
+    public Book updateBook(@RequestBody Book book) {
+        return book = bookRepository.save(book);
     }
 }

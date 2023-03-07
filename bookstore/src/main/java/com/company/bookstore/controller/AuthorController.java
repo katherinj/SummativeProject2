@@ -16,16 +16,17 @@ public class AuthorController {
     AuthorRepository authorRepository;
     @PostMapping(path = "/author")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createAuthor(@RequestBody Author author) {
-        authorRepository.save(author);
+    public Author createAuthor(@RequestBody Author author) {
+        return author = authorRepository.save(author);
     }
     @PutMapping(path = "/author")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateAuthor(@RequestBody Author author) {
-        authorRepository.save(author);
+    public Author updateAuthor(@RequestBody Author author) {
+        return author = authorRepository.save(author);
     }
 
     @DeleteMapping(path = "/author/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteAuthor(@PathVariable Integer id) {
         authorRepository.deleteById(id);
     }
