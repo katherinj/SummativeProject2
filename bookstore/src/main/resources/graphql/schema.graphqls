@@ -21,6 +21,7 @@ type Book {
     publisherId: Int!
 }
 
+
 type Author {
     authorId: Int!
     firstName: String!
