@@ -11,6 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
@@ -62,7 +63,7 @@ public class BookRepositoryTest {
         book1.setPublishDate(new Date("2015-08-01"));
         book1 = bookRepository.save(book1);
         // Act...
-        List<Book> bookList = bookRepository.findByAuthorId(1);
+        Set<Book> bookList = bookRepository.findByAuthorId(1);
         // Assert...
         assertEquals(1, bookList.size());
     }

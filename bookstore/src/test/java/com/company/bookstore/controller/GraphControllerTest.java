@@ -15,6 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.doReturn;
@@ -106,7 +107,7 @@ public class GraphControllerTest {
         list.add(publisher);
 
         publisherRepository = mock(PublisherRepository.class);
-        doReturn(publisher).when(publisherRepository).findById(1);
+        doReturn(Optional.of(publisher)).when(publisherRepository).findById(1);
         doReturn(list).when(publisherRepository).findAll();
     }
     private void setUpBookRepositoryMock() {
@@ -120,7 +121,7 @@ public class GraphControllerTest {
         book.setBookId(1);
 
         bookRepository = mock(BookRepository.class);
-        doReturn(book).when(bookRepository).findById(1);
+        doReturn(Optional.of(book)).when(bookRepository).findById(1);
     }
     private void setAuthorRepositoryMock() {
         Author author = new Author();
@@ -135,6 +136,6 @@ public class GraphControllerTest {
         author.setAuthorId(1);
 
         authorRepository = mock(AuthorRepository.class);
-        doReturn(author).when(authorRepository).findById(1);
+        doReturn(Optional.of(author)).when(authorRepository).findById(1);
     }
 }
