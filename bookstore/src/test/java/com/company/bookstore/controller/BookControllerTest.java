@@ -14,7 +14,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -64,7 +64,7 @@ public class BookControllerTest {
         book.setPrice(29.99);
         book.setTitle("An interesting book");
         book.setPublisherId(1);
-        book.setPublishDate(new Date("2015-08-01"));
+        book.setPublishDate(Date.valueOf("2015-08-01"));
 
         // Convert Java Object to JSON
         String inputJson = mapper.writeValueAsString(book);
@@ -75,7 +75,7 @@ public class BookControllerTest {
         outputBook.setPrice(29.99);
         outputBook.setTitle("An interesting book");
         outputBook.setPublisherId(1);
-        outputBook.setPublishDate(new Date("2015-08-01"));
+        outputBook.setPublishDate(Date.valueOf("2015-08-01"));
         outputBook.setBookId(2);
 
         String outputJson = mapper.writeValueAsString(outputBook);
@@ -99,7 +99,7 @@ public class BookControllerTest {
         book.setPrice(29.99);
         book.setTitle("An interesting book");
         book.setPublisherId(1);
-        book.setPublishDate(new Date("2015-08-01"));
+        book.setPublishDate(Date.valueOf("2015-08-01"));
 
         // Convert Java Object to JSON
         String inputJson = mapper.writeValueAsString(book);

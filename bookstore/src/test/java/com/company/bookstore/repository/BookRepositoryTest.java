@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -33,7 +33,7 @@ public class BookRepositoryTest {
         book.setPrice(29.99);
         book.setTitle("An interesting book");
         book.setPublisherId(1);
-        book.setPublishDate(new Date("2015-08-01"));
+        book.setPublishDate(Date.valueOf("2015-08-01"));
         // Act...
         book = bookRepository.save(book);
         // Assert...
@@ -50,7 +50,7 @@ public class BookRepositoryTest {
         book.setPrice(29.99);
         book.setTitle("An interesting book");
         book.setPublisherId(1);
-        book.setPublishDate(new Date("2015-08-01"));
+        book.setPublishDate(Date.valueOf("2015-08-01"));
 
         book = bookRepository.save(book);
 
@@ -60,7 +60,7 @@ public class BookRepositoryTest {
         book1.setPrice(30.00);
         book1.setTitle("A boring book");
         book1.setPublisherId(1);
-        book1.setPublishDate(new Date("2015-08-01"));
+        book1.setPublishDate(Date.valueOf("2015-08-01"));
         book1 = bookRepository.save(book1);
         // Act...
         Set<Book> bookList = bookRepository.findByAuthorId(1);
@@ -76,7 +76,7 @@ public class BookRepositoryTest {
         book.setPrice(29.99);
         book.setTitle("An interesting book");
         book.setPublisherId(1);
-        book.setPublishDate(new Date("2015-08-01"));
+        book.setPublishDate(Date.valueOf("2015-08-01"));
         book = bookRepository.save(book);
 
         Book book1 = new Book();
@@ -85,7 +85,7 @@ public class BookRepositoryTest {
         book1.setPrice(30.00);
         book1.setTitle("A boring book");
         book1.setPublisherId(1);
-        book1.setPublishDate(new Date("2015-08-01"));
+        book1.setPublishDate(Date.valueOf("2015-08-01"));
         book1 = bookRepository.save(book1);
         // Act...
         List<Book> bookList = bookRepository.findAll();
@@ -101,7 +101,7 @@ public class BookRepositoryTest {
         book.setPrice(29.99);
         book.setTitle("An interesting book");
         book.setPublisherId(1);
-        book.setPublishDate(new Date("2015-08-01"));
+        book.setPublishDate(Date.valueOf("2015-08-01"));
         book = bookRepository.save(book);
         // Act...
         Optional<Book> book1 = bookRepository.findById(book.getBookId());
@@ -116,7 +116,7 @@ public class BookRepositoryTest {
         book.setPrice(29.99);
         book.setTitle("An interesting book");
         book.setPublisherId(1);
-        book.setPublishDate(new Date("2015-08-01"));
+        book.setPublishDate(Date.valueOf("2015-08-01"));
         book = bookRepository.save(book);
 
         bookRepository.deleteAll();
@@ -132,7 +132,7 @@ public class BookRepositoryTest {
         book.setPrice(29.99);
         book.setTitle("An interesting book");
         book.setPublisherId(1);
-        book.setPublishDate(new Date("2015-08-01"));
+        book.setPublishDate(Date.valueOf("2015-08-01"));
         book = bookRepository.save(book);
 
         book.setTitle("Updated!");
