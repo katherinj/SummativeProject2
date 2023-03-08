@@ -17,7 +17,9 @@ public class Publisher implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @OneToMany(mappedBy = "publisherId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @JoinColumn(name = "publisherId")
+
     private Set<Book> books = new HashSet<>();
 
     private String name;
@@ -28,8 +30,7 @@ public class Publisher implements Serializable {
     private String phone;
     private String email;
 
-    public Publisher() {
-    }
+    public Publisher() {}
 
     public Publisher(Integer id, String name, String street, String city, String state, String postalCode, String phone, String email) {
         this.id = id;
