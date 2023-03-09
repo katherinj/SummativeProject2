@@ -40,7 +40,7 @@ public class PublisherRepositoryTest {
         publisher = publisherRepo.save(publisher);
 
         //Assert...
-        Optional<Publisher> publisher1 = publisherRepo.findById(publisher.getId());
+        Optional<Publisher> publisher1 = publisherRepo.findById(publisher.getPublisherId());
         assertEquals(publisher1.get(), publisher);
     }
 
@@ -61,7 +61,7 @@ public class PublisherRepositoryTest {
         publisher = publisherRepo.save(publisher);
 
         //Assert...
-        Optional<Publisher> publisher1 = publisherRepo.findById(publisher.getId());
+        Optional<Publisher> publisher1 = publisherRepo.findById(publisher.getPublisherId());
         assertEquals(publisher1.get(), publisher);
     }
 
@@ -76,13 +76,13 @@ public class PublisherRepositoryTest {
         publisher.setPostalCode("01249");
         publisher.setPhone("6099549392");
         publisher.setEmail("joesmith@gmail.com");
-        publisherRepo.save(publisher);
+        publisher = publisherRepo.save(publisher);
 
         //Act...
-        publisherRepo.deleteById(publisher.getId());
+        publisherRepo.deleteById(publisher.getPublisherId());
 
         //Assert...
-        Optional<Publisher> publisher1 = publisherRepo.findById(publisher.getId());
+        Optional<Publisher> publisher1 = publisherRepo.findById(publisher.getPublisherId());
         assertFalse(publisher1.isPresent());
     }
 
@@ -101,7 +101,7 @@ public class PublisherRepositoryTest {
         publisher.setEmail("joesmith@gmail.com");
         publisher = publisherRepo.save(publisher);
 
-        Optional<Publisher> foundPublisher = publisherRepo.findById(publisher.getId());
+        Optional<Publisher> foundPublisher = publisherRepo.findById(publisher.getPublisherId());
 
         //Assert...
         assertEquals(foundPublisher.get(), publisher);

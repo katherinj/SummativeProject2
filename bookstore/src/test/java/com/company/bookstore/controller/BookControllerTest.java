@@ -57,6 +57,7 @@ public class BookControllerTest {
     }
 
     // Testing POST /book
+    @Test
     public void testCreateBook() throws Exception {
         Book book = new Book();
         book.setIsbn("9783161484100");

@@ -122,7 +122,7 @@ public class PublisherControllerTest {
         inputPublisher.setPostalCode("01249");
         inputPublisher.setPhone("6099549392");
         inputPublisher.setEmail("joesmith@gmail.com");
-        inputPublisher.setId(2);
+        inputPublisher.setPublisherId(2);
 
         String outputJson = mapper.writeValueAsString(inputPublisher);
 

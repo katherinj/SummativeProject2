@@ -13,13 +13,12 @@ import java.util.Set;
 public class Publisher implements Serializable {
 
     @Id
-    @Column(name = "publisher_id")
+    //@Column(name = "publisher_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer publisherId;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    @JoinColumn(name = "publisherId")
-
+    @OneToMany(mappedBy ="publisherId" ,cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    //@JoinColumn(name = "publisher_id")
     private Set<Book> books = new HashSet<>();
 
     private String name;
@@ -32,19 +31,14 @@ public class Publisher implements Serializable {
 
     public Publisher() {}
 
-    public Publisher(Integer id, String name, String street, String city, String state, String postalCode, String phone, String email) {
-        this.id = id;
-        this.name = name;
-        this.street = street;
-        this.city = city;
-        this.state = state;
-        this.postalCode = postalCode;
-        this.phone = phone;
-        this.email = email;
+    public Integer getPublisherId() {
+        return publisherId;
     }
 
-    public Integer getId() {return id;}
-    public void setId(Integer id) {this.id = id;}
+    public void setPublisherId(Integer publisherId) {
+        this.publisherId = publisherId;
+    }
+
 
     public String getName() {return name;}
     public void setName(String name) {this.name = name;}
@@ -72,7 +66,7 @@ public class Publisher implements Serializable {
         if (this == o) return true;
         if (!(o instanceof Publisher)) return false;
         Publisher that = (Publisher) o;
-        return  Objects.equals(getId(), that.getId()) &&
+        return  Objects.equals(getPublisherId(), that.getPublisherId()) &&
                 Objects.equals(getName(),that.getName()) &&
                 Objects.equals(getStreet(), that.getStreet()) &&
                 Objects.equals(getCity(), that.getCity()) &&
@@ -84,6 +78,6 @@ public class Publisher implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), getStreet(), getCity(), getState(), getPostalCode(), getPhone(), getEmail());
+        return Objects.hash(getPublisherId(), getName(), getStreet(), getCity(), getState(), getPostalCode(), getPhone(), getEmail());
     }
 }
