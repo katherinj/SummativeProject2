@@ -23,7 +23,6 @@ public class GraphController {
     AuthorRepository authorRepository;
     @Autowired
     BookRepository bookRepository;
-
     @QueryMapping
     public List<Publisher> publishers() {
         return  publisherRepository.findAll();

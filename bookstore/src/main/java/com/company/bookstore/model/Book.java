@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
@@ -92,10 +93,11 @@ public class Book implements Serializable {
 
     @Override
     public String toString() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         return "Book{" +
                 "bookId=" + bookId +
                 ", isbn='" + isbn + '\'' +
-                ", publishDate=" + publishDate +
+                ", publishDate=" + dateFormat.format(publishDate) +
                 ", authorId=" + authorId +
                 ", title='" + title + '\'' +
                 ", publisherId=" + publisherId +

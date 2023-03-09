@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Set;
 
 @Repository
-@Component
 public interface BookRepository extends JpaRepository<Book, Integer> {
     Set<Book> findByAuthorId(Integer authorId);
 }
